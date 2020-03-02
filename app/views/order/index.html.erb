@@ -1,0 +1,89 @@
+<%= form_tag(controller: "order", action: "index") do %>
+
+  <h3 class="ml-4">MENU</h3>
+  <div class="jumbotron m-2">
+		<div class="row", height:"300px">
+			<div class="col">
+				<%= image_tag "/beef.jpg", width:"100%", height:"200px" %>
+				<span>Gyu Kushi(Beef) <em>JPY : 140</em></span>
+			</div>
+	
+			<div class="col">
+				<%= image_tag "/polk.jpg", width:"100%", height:"200px" %>
+				<span>Buta Kushi(Polk) <em>JPY : 120</em></span>
+			</div>
+	
+			<div class="col">
+				<%= image_tag "/beer.jpg", width:"100%", height:"200px" %>
+				<span>Premium Malts <em>JPY : 500</em></span>
+			</div>
+	
+			<div class="col">
+				<%= image_tag "/green.jpg", width:"100%", height:"200px" %>
+				<span>Green Tea <em>JPY : 0</em></span>
+			</div>
+		</div>
+  </div>
+
+  <h3 class="ml-4">Select</h3>
+	<div class="jumbotron m-2">
+			<div class="row", height:"300px", padding:"50px" >
+				<div class="col-7">
+					<label for="name">Food</label>
+					<%= select_tag('food', options_for_select(["Gyu Kushi", "Buta Kushi", "Premium Maltz", "Green Tea"],{class:"form-control"})) %>
+				</div>
+	
+				<div class="col-2">
+					<label for="name">pcs</label>
+					<%= select_tag('qt_food', options_for_select([ 0, 1, 2, 3, 4, 5],{class:"form-control"})) %>
+				</div>
+				<div class="col-1">
+					<%= submit_tag("Select", {class:"btn btn-primary"}) %>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+  <h3 class="ml-4">Order</h3>
+  <div class="jumbotron m-2">
+		<div class="row">
+			<p class="col-9"><%= @msg %></p>
+			<div class="col-1">
+				<%= submit_tag("Order", {class:"btn btn-primary"}) %>
+			</div>
+		</div>
+	</div>
+</div>
+  <% end %>
+	
+
+
+	<h3 class="ml-4"> Order Record</h3>
+	<div class="jumbotron m-2">
+	<div class="row">
+	<h5 class="col-9">Current Total : <%= @total %></h5>
+	<div class="col-1">
+	<%= submit_tag("Check", {class:"btn btn-primary"}) %>
+	</div>
+	
+	</div>
+  <table class="table mt-4">
+	<tr>
+	<th style="width:20%">Date</th>
+	<th style="width:20%">Food</th>
+	<th style="width:20%">Pcs</th>
+	<th style="width:20%">Price</th>
+	<th style="width:20%">Subtotal</th>			
+	</tr>
+	<% @order_data.each do |key,obj| %>
+    <tr>
+		<td class="time"><%= Time.at(key.to_i) %></td>
+		<td class="food"><%= obj['food'] %></td>
+		<td class="qt_food"><%= obj['qt_food'] %></td>
+		<td class="price"><%= obj['price'] %></td>
+		<td class="subtotal"><%= obj['subtotal'] %></td>
+    </tr>
+    <% end %>
+		</table>
+		</div>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= @title %></title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <link rel="stylesheet" 
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="C:\Users\kasum\Desktop\ruby_lesson\chap1\RailApp\app\assets\stylesheets\order.scss">
+
+</head>
+
+
+<body class="container text-body">
+  <h1 class="mb-4 ml-1 display-4 text-primary">Saku-Saku Kushi Katsu Honpo</h1>
+  <%= yield %>
+  <div class="mt-4 text-center small text-dark border-top border-dark">
+  order</div>
+</body>
+</html>
